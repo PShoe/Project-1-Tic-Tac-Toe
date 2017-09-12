@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;;
+}
+
+.square {
+  border: 1px solid black;
+  background-color: white;
+  margin-bottom: 4px;
+  height: 100px;
+  width: 100px;
+  display: inline-block;
+}
+
+.board {
+  background-color: linen;
+  width: 315px;
+  height: 315px;
+}
+
+.clicked {
+  background-color: red;
+}
+.player1 {
+  border: 1px solid black;
+  background-color: lightblue;
+  margin-bottom: 4px;
+  height: 100px;
+  width: 100px;
+  display: inline-block;
+}
+.player2 {
+  border: 1px solid black;
+  background-color: lime;
+  margin-bottom: 4px;
+  height: 100px;
+  width: 100px;
+  display: inline-block;
+}
