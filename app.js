@@ -13,8 +13,13 @@
 
 
 var board = document.querySelector('.board');
-
 var playerOne = true;
+var winner = 0;
+tie = 0;
+gameOver = false;
+player1Score = 0;
+player2Score = 0;
+boardArray = ["","","","","","","","",""];
 
 board.addEventListener('click', function(event) {
   checkSquare(event);
@@ -22,7 +27,9 @@ board.addEventListener('click', function(event) {
   pushtoBoardArray(event);
   checkifWinner();
   checkNoWinner();
+  endGame();
   // declareResult();
+  tallyScore();
 })
 
 var checkSquare = function (event) {
@@ -35,18 +42,15 @@ var markSquare = function (event) {
   if (checkSquare(event) === true){
     if ( playerOne === true ){
         event.target.classList.add("player1");
+        // event.target.textContent = "X";
         playerOne = false;
     } else if (playerOne === false){
         event.target.classList.add("player2");
+        // event.target.textContent = "O";
         playerOne = true;
     }
   }
 }
-
-boardArray =
-["","","",
-"","","",
-"","",""];
 
 var pushtoBoardArray = function (event) {
 var squareToPush = event.target.getAttribute('id');
@@ -58,7 +62,6 @@ var squareToPush = event.target.getAttribute('id');
   }
   };
 
-var winner = 0;
 var checkifWinner = function () {
 
 var row1 = boardArray[0]+boardArray[1]+boardArray[2];
@@ -76,11 +79,11 @@ wins.forEach(function(element){
    if (element === "XXX") {
      winner = 1;
      console.log("Player 1 Wins");
-    //  endGame();
+     endGame();
    } else if (element === "OOO") {
      winner = 2;
      console.log("Player 2 Wins")
-    //  endGame();
+     endGame();
    }
     return winner;
  })
@@ -88,7 +91,8 @@ wins.forEach(function(element){
 
 var checkNoWinner = function () {
   if (boardArray.indexOf("") === -1 && winner === 0) {
-    console.log("there is no winner");
+    console.log("No one won this game");
+    winner = 3;
   }
 }
 
@@ -96,6 +100,26 @@ var checkNoWinner = function () {
 //
 // }
 //
-// var endGame = function () {
-//
-// }
+
+var endGame = function () {
+  if (winner !== 0){
+    gameOver = true;
+  }
+  return gameOver;
+}
+
+
+var tallyScore = function () {
+  if (gameOver === true){
+    if (winner === 3){
+      tie ++;
+      document.querySelector('h3 span').textContent = tie;
+    } else if (winner == 1) {
+      player1Score ++;
+      document.querySelector('.player1Score span').textContent = player1Score;
+    } else if (winner === 2){
+      player2Score ++;
+      document.querySelector('.player2Score span').textContent = player2Score;
+    }
+  }
+}
