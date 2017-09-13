@@ -2,8 +2,13 @@
   box-sizing: border-box;;
 }
 body {
-  background-color: #312c42;
+  background-color: #0b0b0b;
+  background-image: url("../images/moon.jpg");
   color: white;
+  font-family: 'Roboto', sans-serif;
+}
+header {
+  display: inline-block;
 }
 .square {
   border: 1px solid white;
@@ -13,14 +18,16 @@ body {
   width: 100px;
   display: inline-block;
   border-radius: 5%;
+  border: 2px solid black;
 }
 
 .board {
-  width: 315px;
-  height: 315px;
+  width: 310px;
+  height: 312px;
   margin: 20px auto;
   margin-top: 10%;
-  border-radius: 20%;
+  border-radius: 5%;
+  /*background-color: rgba(11,11,11,.7);*/
 }
 
 .player1 {
@@ -30,6 +37,7 @@ body {
   height: 100px;
   width: 100px;
   display: inline-block;
+  background-image: url("../images/wallace.png");
 }
 .player2 {
   border: 1px solid black;
@@ -38,22 +46,52 @@ body {
   height: 100px;
   width: 100px;
   display: inline-block;
-}
-.player1Avatar,
-.player2Avatar {
-  margin: auto;
-  height: 40px;
-  width: 40px;
-  background-color: white;
-  display: inline-block;
-  text-align: center;
-}
-.player1Avatar {
-  background-color: #f0d06b;
-}
-.player2Avatar {
-  background-color: #df8b52;
+  background-image: url("../images/gromit.png");
 }
 .endGame {
   background-color: lime;
+}
+.line {
+  background-color: green;
+}
+
+
+/* The Modal (background) */
+.modal {
+    color: black;
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    border-radius: 10px;
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }

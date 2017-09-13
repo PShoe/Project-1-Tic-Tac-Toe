@@ -1,17 +1,3 @@
-
-// until there is a winner continue this loop (a while loop?)
-
-//  player1 takes turn
-//  store data of that square
-// fill the square with the class of X or O
-// switch player
-
-// player 2 takes turn
-// store data of that square
-// fill the square with the class of X or O
-// switch player
-
-
 var board = document.querySelector('.board');
 var squares = document.querySelectorAll('.square');
 var playerOne = true;
@@ -21,6 +7,7 @@ gameOver = false;
 player1Score = 0;
 player2Score = 0;
 boardArray = ["","","","","","","","",""];
+var headerDiv = document.querySelector('header');
 
 board.addEventListener('click', function(event) {
   if (gameOver === false){
@@ -43,11 +30,9 @@ var markSquare = function (event) {
   if (checkSquare(event) === true){
     if ( playerOne === true ){
         event.target.classList.add("player1");
-        // event.target.textContent = "X";
         playerOne = false;
     } else if (playerOne === false){
         event.target.classList.add("player2");
-        // event.target.textContent = "O";
         playerOne = true;
     }
   }
@@ -80,6 +65,8 @@ var col3 = boardArray[2]+boardArray[5]+boardArray[8];
 var dia1 = boardArray[0]+boardArray[4]+boardArray[8];
 var dia2 = boardArray[2]+boardArray[4]+boardArray[6];
 
+//use and object here instead??
+
 var wins = [row1, row2, row3, col1, col2, col3, dia1, dia2];
 
 wins.forEach(function(element){
@@ -87,6 +74,7 @@ wins.forEach(function(element){
      winner = 1;
      console.log("Player 1 Wins");
      var indexWin = wins.indexOf("XXX");
+     console.log(wins[indexWin]);
      console.log(indexWin);
      endGame();
 
@@ -101,6 +89,8 @@ wins.forEach(function(element){
  })
 }
 
+// var showLine = function() {
+// }
 
 var endGame = function () {
   if (winner !== 0){
@@ -117,7 +107,7 @@ var reset = function () {
     gameOver = false;
   })
 }
-var playAgainBtn = document.querySelector('button');
+var playAgainBtn = document.querySelector('#playAgain');
 playAgainBtn.addEventListener('click',reset);
 
 var tallyScore = function () {
@@ -133,4 +123,40 @@ var tallyScore = function () {
       document.querySelector('.player2Score span').textContent = player2Score;
     }
   }
+}
+
+var submitButton = document.querySelector("#submitButton");
+
+submitButton.addEventListener('click', function(){
+  var player1Name = document.querySelector("#player1Name").value;
+  var player2Name = document.querySelector("#player2Name").value;
+  document.querySelector(".player1Score").textContent = player1Name + ":  ";
+  document.querySelector(".player2Score").textContent = player2Name + ":  ";
+  modal.style.display = "none";
+})
+
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
 }
