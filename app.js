@@ -17,13 +17,22 @@ var board = document.querySelector('.board');
 var playerOne = true;
 
 board.addEventListener('click', function(event) {
+  checkSquare(event);
   markSquare(event);
   pushtoBoardArray(event);
-  checkWins();
-  // declareWinner();
+  checkifWinner();
+  checkNoWinner();
+  // declareResult();
 })
 
+var checkSquare = function (event) {
+  if (event.target.classList.contains("player1") === false && event.target.classList.contains("player2") === false){
+    return true;
+  }
+}
+
 var markSquare = function (event) {
+  if (checkSquare(event) === true){
     if ( playerOne === true ){
         event.target.classList.add("player1");
         playerOne = false;
@@ -31,6 +40,7 @@ var markSquare = function (event) {
         event.target.classList.add("player2");
         playerOne = true;
     }
+  }
 }
 
 boardArray =
@@ -48,7 +58,8 @@ var squareToPush = event.target.getAttribute('id');
   }
   };
 
-var checkWins = function () {
+var winner = 0;
+var checkifWinner = function () {
 
 var row1 = boardArray[0]+boardArray[1]+boardArray[2];
 var row2 = boardArray[3]+boardArray[4]+boardArray[5];
@@ -63,18 +74,28 @@ var wins = [row1, row2, row3, col1, col2, col3, dia1, dia2];
 
 wins.forEach(function(element){
    if (element === "XXX") {
-     var winner = 1;
-     return winner;
+     winner = 1;
      console.log("Player 1 Wins");
+    //  endGame();
    } else if (element === "OOO") {
-     var winner = 2;
-     return winner;
+     winner = 2;
      console.log("Player 2 Wins")
+    //  endGame();
    }
+    return winner;
  })
 }
 
-var declareWinner = function () {
-  console.log(winner);
-  // fruits.indexOf("Apple");
+var checkNoWinner = function () {
+  if (boardArray.indexOf("") === -1 && winner === 0) {
+    console.log("there is no winner");
+  }
 }
+
+// var declareResult = function () {
+//
+// }
+//
+// var endGame = function () {
+//
+// }
