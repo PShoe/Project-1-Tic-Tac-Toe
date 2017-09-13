@@ -13,6 +13,7 @@
 
 
 var board = document.querySelector('.board');
+var squares = document.querySelectorAll('.square');
 var playerOne = true;
 var winner = 0;
 tie = 0;
@@ -22,14 +23,14 @@ player2Score = 0;
 boardArray = ["","","","","","","","",""];
 
 board.addEventListener('click', function(event) {
+  if (gameOver === false){
   checkSquare(event);
   markSquare(event);
   pushtoBoardArray(event);
   checkifWinner();
-  checkNoWinner();
-  endGame();
   // declareResult();
   tallyScore();
+}
 })
 
 var checkSquare = function (event) {
@@ -64,6 +65,12 @@ var squareToPush = event.target.getAttribute('id');
 
 var checkifWinner = function () {
 
+if (boardArray.indexOf("") === -1 && winner === 0) {
+  console.log("No one won this game");
+  winner = 3;
+  endGame();
+}
+
 var row1 = boardArray[0]+boardArray[1]+boardArray[2];
 var row2 = boardArray[3]+boardArray[4]+boardArray[5];
 var row3 = boardArray[6]+boardArray[7]+boardArray[8];
@@ -79,27 +86,21 @@ wins.forEach(function(element){
    if (element === "XXX") {
      winner = 1;
      console.log("Player 1 Wins");
+     var indexWin = wins.indexOf("XXX");
+     console.log(indexWin);
      endGame();
+
    } else if (element === "OOO") {
      winner = 2;
-     console.log("Player 2 Wins")
+     console.log("Player 2 Wins");
+     var indexWin = wins.indexOf("OOO");
+     console.log(indexWin);
      endGame();
    }
     return winner;
  })
 }
 
-var checkNoWinner = function () {
-  if (boardArray.indexOf("") === -1 && winner === 0) {
-    console.log("No one won this game");
-    winner = 3;
-  }
-}
-
-// var declareResult = function () {
-//
-// }
-//
 
 var endGame = function () {
   if (winner !== 0){
@@ -108,13 +109,23 @@ var endGame = function () {
   return gameOver;
 }
 
+var reset = function () {
+  squares.forEach(function(element){
+    element.classList.remove('player1');
+    element.classList.remove('player2');
+    boardArray = ["","","","","","","","",""];
+    gameOver = false;
+  })
+}
+var playAgainBtn = document.querySelector('button');
+playAgainBtn.addEventListener('click',reset);
 
 var tallyScore = function () {
   if (gameOver === true){
     if (winner === 3){
       tie ++;
       document.querySelector('h3 span').textContent = tie;
-    } else if (winner == 1) {
+    } else if (winner === 1) {
       player1Score ++;
       document.querySelector('.player1Score span').textContent = player1Score;
     } else if (winner === 2){
