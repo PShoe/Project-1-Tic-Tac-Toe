@@ -23,10 +23,13 @@ var winScreen = document.querySelector('.declareWinner');
 var tieWin = document.querySelector('#tieWin')
 var player2Win = document.querySelector('#player2Win');
 var player1Win = document.querySelector('#player1Win');
+var player1Name = "Player 1"
+var player2Name = "Player 2"
+var mainDiv = document.querySelector('main')
 
 submitButton.addEventListener('click', function(){
-  var player1Name = document.querySelector("#player1Name").value;
-  var player2Name = document.querySelector("#player2Name").value;
+  player1Name = document.querySelector("#player1Name").value;
+  player2Name = document.querySelector("#player2Name").value;
   document.querySelector("#player1NameSpan").textContent = player1Name + ":  ";
   document.querySelector("#player2NameSpan").textContent = player2Name + ":  ";
   modal.style.display = "none";
@@ -127,6 +130,7 @@ wins.forEach(function(element){
 var showWinPage = function () {
   if (gameOver === true){
     winScreen.classList.remove('winScreenHide');
+    mainDiv.classList.add('block');
     var winnerName = document.querySelector('.declareWinner span');
     if (winner === 3) {
       player1Win.classList.add('block');
@@ -164,6 +168,7 @@ var reset = function () {
   player1Win.classList.remove('block');
   player2Win.classList.remove('block');
   tieWin.classList.remove('block');
+  mainDiv.classList.remove('block');
 }
 
 var playAgainBtn = document.querySelector('#playAgain');
