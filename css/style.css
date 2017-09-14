@@ -4,7 +4,7 @@
 body {
   background-color: #0b0b0b;
   background-image: url("../images/stars3.png");
-  color:	white;
+  color:	lightblue;
   font-family: 'Roboto', sans-serif;
 }
 header {
@@ -25,6 +25,7 @@ footer {
 h1 {
   font-family: 'Abril Fatface', cursive;
   margin: 30px auto;
+  padding: 20px 0;
   font-size: 45px;
   max-width: 900px;
   color: #FFFF66;
@@ -177,4 +178,13 @@ h3 {
 #submitButton:hover {
   background: #df8b52;
   text-decoration: none;
+}
+.player1Color {
+  font-size: 50px;
+  color: #df8b52;
+}
+.player2Color {
+  font-size: 50px;
+  color: #df8b52;
+  color: #f0d06b;
 }

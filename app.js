@@ -23,9 +23,11 @@ var winScreen = document.querySelector('.declareWinner');
 var tieWin = document.querySelector('#tieWin')
 var player2Win = document.querySelector('#player2Win');
 var player1Win = document.querySelector('#player1Win');
-var player1Name = "Player 1"
-var player2Name = "Player 2"
-var mainDiv = document.querySelector('main')
+var player1Name = "Player 1";
+var player2Name = "Player 2";
+var mainDiv = document.querySelector('main');
+var player2NameText = document.querySelector('#player2NameSpan');
+var player1NameText = document.querySelector('#player1NameSpan');
 
 submitButton.addEventListener('click', function(){
   player1Name = document.querySelector("#player1Name").value;
@@ -66,12 +68,17 @@ var checkSquare = function (event) {
 
 var markSquare = function (event) {
   if (checkSquare(event) === true){
+
     if ( playerOne === true ){
-        event.target.classList.add("player1");
-        playerOne = false;
+      event.target.classList.add("player1");
+      player1NameText.classList.add("player1Color");
+      player2NameText.classList.remove("player2Color");
+      playerOne = false;
     } else if (playerOne === false){
-        event.target.classList.add("player2");
-        playerOne = true;
+      event.target.classList.add("player2");
+      player1NameText.classList.remove("player1Color");
+      player2NameText.classList.add("player2Color");
+      playerOne = true;
     }
   }
 }
@@ -169,6 +176,8 @@ var reset = function () {
   player2Win.classList.remove('block');
   tieWin.classList.remove('block');
   mainDiv.classList.remove('block');
+  player1NameText.classList.remove("player1Color");
+  player2NameText.classList.remove("player2Color");
 }
 
 var playAgainBtn = document.querySelector('#playAgain');
