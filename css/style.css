@@ -186,11 +186,11 @@ h3 {
   color: white;
 }
 footer {
-  background-color: rgba(166,71,21,.8);
+  /*background-color: rgba(166,71,21,.8);*/
   color: white;
   text-align: left;
   padding-left: 30px;
-  border-top: 1px solid white;
+  /*border-top: 1px solid white;*/
   font-family: 'Roboto', sans-serif;
   position: absolute; width:100%; bottom:0px;
   line-height: 0px;
