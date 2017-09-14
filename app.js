@@ -1,3 +1,10 @@
+/// FOR THURSDAY
+// 1 delcare winner function
+// 2 css
+// 3 see if I can make a line
+
+
+
 var board = document.querySelector('.board');
 var squares = document.querySelectorAll('.square');
 var playerOne = true;
@@ -8,6 +15,34 @@ player1Score = 0;
 player2Score = 0;
 boardArray = ["","","","","","","","",""];
 var headerDiv = document.querySelector('header');
+var submitButton = document.querySelector("#submitButton");
+var modal = document.getElementById('myModal');
+var btn = document.getElementById("playerNameBtn");
+var span = document.getElementsByClassName("close")[0];
+var winScreen = document.querySelector('.declareWinner');
+var tieWin = document.querySelector('#tieWin')
+var player2Win = document.querySelector('#player2Win');
+var player1Win = document.querySelector('#player1Win');
+
+submitButton.addEventListener('click', function(){
+  var player1Name = document.querySelector("#player1Name").value;
+  var player2Name = document.querySelector("#player2Name").value;
+  document.querySelector("#player1NameSpan").textContent = player1Name + ":  ";
+  document.querySelector("#player2NameSpan").textContent = player2Name + ":  ";
+  modal.style.display = "none";
+})
+
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+span.onclick = function() {
+    modal.style.display = "none";
+}
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
 
 board.addEventListener('click', function(event) {
   if (gameOver === false){
@@ -15,8 +50,8 @@ board.addEventListener('click', function(event) {
   markSquare(event);
   pushtoBoardArray(event);
   checkifWinner();
-  // declareResult();
   tallyScore();
+  showWinPage();
 }
 })
 
@@ -89,8 +124,25 @@ wins.forEach(function(element){
  })
 }
 
-// var showLine = function() {
-// }
+var showWinPage = function () {
+  if (gameOver === true){
+    winScreen.classList.remove('winScreenHide');
+    var winnerName = document.querySelector('.declareWinner span');
+    if (winner === 3) {
+      player1Win.classList.add('block');
+      player2Win.classList.add('block');
+      winnerName.textContent = "No one";
+    } else if (winner === 2){
+      player1Win.classList.add('block');
+      tieWin.classList.add('block')
+      winnerName.textContent = player2Name;
+    } else if (winner === 1){
+      player2Win.classList.add('block');
+      tieWin.classList.add('block');
+      winnerName.textContent = player1Name;
+    }
+}
+}
 
 var endGame = function () {
   if (winner !== 0){
@@ -100,13 +152,20 @@ var endGame = function () {
 }
 
 var reset = function () {
+  boardArray = ["","","","","","","","",""];
+  gameOver = false;
+  playerOne = true;
+  winner = 0;
   squares.forEach(function(element){
     element.classList.remove('player1');
     element.classList.remove('player2');
-    boardArray = ["","","","","","","","",""];
-    gameOver = false;
   })
+  winScreen.classList.add('winScreenHide');
+  player1Win.classList.remove('block');
+  player2Win.classList.remove('block');
+  tieWin.classList.remove('block');
 }
+
 var playAgainBtn = document.querySelector('#playAgain');
 playAgainBtn.addEventListener('click',reset);
 
@@ -114,49 +173,13 @@ var tallyScore = function () {
   if (gameOver === true){
     if (winner === 3){
       tie ++;
-      document.querySelector('h3 span').textContent = tie;
+      document.querySelector('#tieScore').textContent = tie;
     } else if (winner === 1) {
       player1Score ++;
-      document.querySelector('.player1Score span').textContent = player1Score;
+      document.querySelector('#player1Score').textContent = player1Score;
     } else if (winner === 2){
       player2Score ++;
-      document.querySelector('.player2Score span').textContent = player2Score;
+      document.querySelector('#player2Score').textContent = player2Score;
     }
   }
-}
-
-var submitButton = document.querySelector("#submitButton");
-
-submitButton.addEventListener('click', function(){
-  var player1Name = document.querySelector("#player1Name").value;
-  var player2Name = document.querySelector("#player2Name").value;
-  document.querySelector(".player1Score").textContent = player1Name + ":  ";
-  document.querySelector(".player2Score").textContent = player2Name + ":  ";
-  modal.style.display = "none";
-})
-
-// Get the modal
-var modal = document.getElementById('myModal');
-
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on the button, open the modal
-btn.onclick = function() {
-    modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
 }
