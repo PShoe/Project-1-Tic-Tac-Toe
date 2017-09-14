@@ -6,6 +6,7 @@ body {
   background-image: url("../images/stars3.png");
   color:	lightblue;
   font-family: 'Roboto', sans-serif;
+  postion: relative;
 }
 header {
   text-align: center;
@@ -30,6 +31,7 @@ h1 {
   font-size: 45px;
   max-width: 900px;
   color: #FFFF66;
+  border-bottom: 1px solid white;
 }
 h3 {
   line-height: 10px;
@@ -45,7 +47,7 @@ h3 {
 }
 
 .player1 {
-  border: 1px solid black;
+  border: 1px solid white;
   background-color: #f0d06b;
   margin-bottom: 1px;
   height: 100px;
@@ -54,7 +56,7 @@ h3 {
   background-image: url("../images/wallace.png");
 }
 .player2 {
-  border: 1px solid black;
+  border: 1px solid white;
   background-color: #df8b52;
   margin-bottom: 1px;
   height: 100px;
@@ -163,8 +165,6 @@ h3 {
   background: #3cb0fd;
   text-decoration: none;
 }
-
-
 #submitButton {
   -webkit-border-radius: 5;
   -moz-border-radius: 5;
@@ -184,4 +184,14 @@ h3 {
 .currentPlayerColor {
   font-size: 50px;
   color: white;
+}
+footer {
+  background-color: rgba(166,71,21,.8);
+  color: white;
+  text-align: left;
+  padding-left: 30px;
+  border-top: 1px solid white;
+  font-family: 'Roboto', sans-serif;
+  position: absolute; width:100%; bottom:0px;
+  line-height: 0px;
 }

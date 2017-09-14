@@ -1,9 +1,3 @@
-/// FOR THURSDAY
-// 1 delcare winner function
-// 2 css
-// 3 see if I can make a line
-
-
 
 var board = document.querySelector('.board');
 var squares = document.querySelectorAll('.square');
