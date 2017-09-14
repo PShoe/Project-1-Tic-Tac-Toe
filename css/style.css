@@ -26,6 +26,7 @@ h1 {
   font-family: 'Abril Fatface', cursive;
   margin: 30px auto;
   padding: 20px 0;
+  font-weight: lighter;
   font-size: 45px;
   max-width: 900px;
   color: #FFFF66;
@@ -33,6 +34,7 @@ h1 {
 h3 {
   line-height: 10px;
   font-size: 30px;
+  font-family: 'Slabo 27px', serif;
 }
 .board {
   width: 310px;
@@ -179,12 +181,7 @@ h3 {
   background: #df8b52;
   text-decoration: none;
 }
-.player1Color {
+.currentPlayerColor {
   font-size: 50px;
-  color: #df8b52;
-}
-.player2Color {
-  font-size: 50px;
-  color: #df8b52;
-  color: #f0d06b;
+  color: white;
 }

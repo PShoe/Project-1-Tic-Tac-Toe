@@ -71,13 +71,13 @@ var markSquare = function (event) {
 
     if ( playerOne === true ){
       event.target.classList.add("player1");
-      player1NameText.classList.add("player1Color");
-      player2NameText.classList.remove("player2Color");
+      player1NameText.classList.add("currentPlayerColor");
+      player2NameText.classList.remove("currentPlayerColor");
       playerOne = false;
     } else if (playerOne === false){
       event.target.classList.add("player2");
-      player1NameText.classList.remove("player1Color");
-      player2NameText.classList.add("player2Color");
+      player1NameText.classList.remove("currentPlayerColor");
+      player2NameText.classList.add("currentPlayerColor");
       playerOne = true;
     }
   }
@@ -176,8 +176,8 @@ var reset = function () {
   player2Win.classList.remove('block');
   tieWin.classList.remove('block');
   mainDiv.classList.remove('block');
-  player1NameText.classList.remove("player1Color");
-  player2NameText.classList.remove("player2Color");
+  player1NameText.classList.remove("currentPlayerColor");
+  player2NameText.classList.remove("currentPlayerColor");
 }
 
 var playAgainBtn = document.querySelector('#playAgain');
