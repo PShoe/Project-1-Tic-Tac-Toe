@@ -89,7 +89,7 @@ var squareToPush = event.target.getAttribute('id');
   } else if (playerOne === true){
     boardArray[squareToPush] = 'O';
   }
-  };
+};
 
 var checkifWinner = function () {
 
@@ -115,16 +115,12 @@ var wins = [row1, row2, row3, col1, col2, col3, dia1, dia2];
 wins.forEach(function(element){
    if (element === "XXX") {
      winner = 1;
-     console.log("Player 1 Wins");
      indexWin = wins.indexOf("XXX");
-     console.log(indexWin);
      endGame();
 
    } else if (element === "OOO") {
      winner = 2;
-     console.log("Player 2 Wins");
      indexWin = wins.indexOf("OOO");
-     console.log(indexWin);
      endGame();
    }
     return [winner,indexWin];
@@ -133,54 +129,55 @@ wins.forEach(function(element){
 
 var showLine = function () {
   if (gameOver === true){
-  var square0 = document.querySelectorAll('.square')[0];
-  var square1 = document.querySelectorAll('.square')[1];
-  var square2 = document.querySelectorAll('.square')[2];
-  var square3 = document.querySelectorAll('.square')[3];
-  var square4 = document.querySelectorAll('.square')[4];
-  var square5 = document.querySelectorAll('.square')[5];
-  var square6 = document.querySelectorAll('.square')[6];
-  var square7 = document.querySelectorAll('.square')[7];
-  var square8 = document.querySelectorAll('.square')[8];
+    var square0 = document.querySelectorAll('.square')[0];
+    var square1 = document.querySelectorAll('.square')[1];
+    var square2 = document.querySelectorAll('.square')[2];
+    var square3 = document.querySelectorAll('.square')[3];
+    var square4 = document.querySelectorAll('.square')[4];
+    var square5 = document.querySelectorAll('.square')[5];
+    var square6 = document.querySelectorAll('.square')[6];
+    var square7 = document.querySelectorAll('.square')[7];
+    var square8 = document.querySelectorAll('.square')[8];
 
-  if (indexWin === 0){
-    square0.className = 'square winningSquare pulse';
-    square1.className = 'square winningSquare pulse';
-    square2.className = 'square winningSquare pulse';
-  } else if (indexWin === 1) {
-    square3.className = 'square winningSquare pulse';
-    square4.className = 'square winningSquare pulse';
-    square5.className = 'square winningSquare pulse';
-  } else if (indexWin === 2) {
-    square6.className = 'square winningSquare pulse';
-    square7.className = 'square winningSquare pulse';
-    square8.className = 'square winningSquare pulse';
-  } else if (indexWin === 3) {
-    square0.className = 'square winningSquare pulse';
-    square3.className = 'square winningSquare pulse';
-    square6.className = 'square winningSquare pulse';
-  } else if (indexWin === 4) {
-    square1.className = 'square winningSquare pulse';
-    square4.className = 'square winningSquare pulse';
-    square7.className = 'square winningSquare pulse';
-  } else if (indexWin === 5) {
-    square2.className = 'square winningSquare pulse';
-    square5.className = 'square winningSquare pulse';
-    square8.className = 'square winningSquare pulse';
-  } else if (indexWin === 6) {
-    square0.className = 'square winningSquare pulse';
-    square4.className = 'square winningSquare pulse';
-    square8.className = 'square winningSquare pulse';
-  } else if (indexWin === 7) {
-    square2.className = 'square winningSquare pulse';
-    square4.className = 'square winningSquare pulse';
-    square6.className = 'square winningSquare pulse';
+    if (indexWin === 0){
+      square0.className = 'square winningSquare pulse';
+      square1.className = 'square winningSquare pulse';
+      square2.className = 'square winningSquare pulse';
+    } else if (indexWin === 1) {
+      square3.className = 'square winningSquare pulse';
+      square4.className = 'square winningSquare pulse';
+      square5.className = 'square winningSquare pulse';
+    } else if (indexWin === 2) {
+      square6.className = 'square winningSquare pulse';
+      square7.className = 'square winningSquare pulse';
+      square8.className = 'square winningSquare pulse';
+    } else if (indexWin === 3) {
+      square0.className = 'square winningSquare pulse';
+      square3.className = 'square winningSquare pulse';
+      square6.className = 'square winningSquare pulse';
+    } else if (indexWin === 4) {
+      square1.className = 'square winningSquare pulse';
+      square4.className = 'square winningSquare pulse';
+      square7.className = 'square winningSquare pulse';
+    } else if (indexWin === 5) {
+      square2.className = 'square winningSquare pulse';
+      square5.className = 'square winningSquare pulse';
+      square8.className = 'square winningSquare pulse';
+    } else if (indexWin === 6) {
+      square0.className = 'square winningSquare pulse';
+      square4.className = 'square winningSquare pulse';
+      square8.className = 'square winningSquare pulse';
+    } else if (indexWin === 7) {
+      square2.className = 'square winningSquare pulse';
+      square4.className = 'square winningSquare pulse';
+      square6.className = 'square winningSquare pulse';
+    }
+    if (winner !== 3 ){
+      var showWin =  setTimeout(showWinPage, 2000);
+    } else {
+      showWinPage();
+    }
   }
-  if (winner !== 3 ){
-    var showWin =  setTimeout(showWinPage, 2000);
-  } else { showWinPage();
-  }
-}
 }
 
 
@@ -189,6 +186,7 @@ var showWinPage = function () {
     winScreen.classList.remove('winScreenHide');
     mainDiv.classList.add('block');
     var winnerName = document.querySelector('.declareWinner span');
+
     if (winner === 3) {
       player1Win.classList.add('block');
       player2Win.classList.add('block');
@@ -202,7 +200,7 @@ var showWinPage = function () {
       tieWin.classList.add('block');
       winnerName.textContent = player1Name;
     }
-}
+  }
 }
 
 var endGame = function () {
