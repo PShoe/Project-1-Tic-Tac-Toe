@@ -22,7 +22,8 @@ var player2Name = "Player 2";
 var mainDiv = document.querySelector('main');
 var player2NameText = document.querySelector('#player2NameSpan');
 var player1NameText = document.querySelector('#player1NameSpan');
-var resetScoreBtn = document.querySelector('#resetScoreBtn')
+var resetScoreBtn = document.querySelector('#resetScoreBtn');
+var indexWin = 8;
 
 submitButton.addEventListener('click', function(){
   player1Name = document.querySelector("#player1Name").value;
@@ -50,8 +51,9 @@ board.addEventListener('click', function(event) {
   markSquare(event);
   pushtoBoardArray(event);
   checkifWinner();
+  showLine();
   tallyScore();
-  showWinPage();
+  // showWinPage();
 }
 })
 
@@ -113,21 +115,70 @@ wins.forEach(function(element){
    if (element === "XXX") {
      winner = 1;
      console.log("Player 1 Wins");
-     var indexWin = wins.indexOf("XXX");
-     console.log(wins[indexWin]);
+     indexWin = wins.indexOf("XXX");
      console.log(indexWin);
      endGame();
 
    } else if (element === "OOO") {
      winner = 2;
      console.log("Player 2 Wins");
-     var indexWin = wins.indexOf("OOO");
+     indexWin = wins.indexOf("OOO");
      console.log(indexWin);
      endGame();
    }
-    return winner;
+    return [winner,indexWin];
  })
 }
+
+var showLine = function () {
+  if (gameOver === true){
+  var square0 = document.querySelectorAll('.square')[0];
+  var square1 = document.querySelectorAll('.square')[1];
+  var square2 = document.querySelectorAll('.square')[2];
+  var square3 = document.querySelectorAll('.square')[3];
+  var square4 = document.querySelectorAll('.square')[4];
+  var square5 = document.querySelectorAll('.square')[5];
+  var square6 = document.querySelectorAll('.square')[6];
+  var square7 = document.querySelectorAll('.square')[7];
+  var square8 = document.querySelectorAll('.square')[8];
+
+  if (indexWin === 0){
+    square0.className = 'square winningSquare';
+    square1.className = 'square winningSquare';
+    square2.className = 'square winningSquare';
+  } else if (indexWin === 1) {
+    square3.className = 'square winningSquare';
+    square4.className = 'square winningSquare';
+    square5.className = 'square winningSquare';
+  } else if (indexWin === 2) {
+    square6.className = 'square winningSquare';
+    square7.className = 'square winningSquare';
+    square8.className = 'square winningSquare';
+  } else if (indexWin === 3) {
+    square0.className = 'square winningSquare';
+    square3.className = 'square winningSquare';
+    square6.className = 'square winningSquare';
+  } else if (indexWin === 4) {
+    square1.className = 'square winningSquare';
+    square4.className = 'square winningSquare';
+    square7.className = 'square winningSquare';
+  } else if (indexWin === 5) {
+    square2.className = 'square winningSquare';
+    square5.className = 'square winningSquare';
+    square8.className = 'square winningSquare';
+  } else if (indexWin === 6) {
+    square0.className = 'square winningSquare';
+    square4.className = 'square winningSquare';
+    square8.className = 'square winningSquare';
+  } else if (indexWin === 7) {
+    square2.className = 'square winningSquare';
+    square4.className = 'square winningSquare';
+    square6.className = 'square winningSquare';
+  }
+  var showWin =  setTimeout(showWinPage, 2000);
+}
+}
+
 
 var showWinPage = function () {
   if (gameOver === true){
@@ -163,8 +214,7 @@ var reset = function () {
   playerOne = true;
   winner = 0;
   squares.forEach(function(element){
-    element.classList.remove('player1');
-    element.classList.remove('player2');
+    element.className = "square";
   })
   winScreen.classList.add('winScreenHide');
   player1Win.classList.remove('block');

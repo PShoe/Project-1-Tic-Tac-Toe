@@ -59,6 +59,9 @@ h3 {
   display: inline-block;
   background-image: url("../images/gromit.png");
 }
+.winningSquare {
+  background-image: url("../images/cheese.png");
+}
 .modal {
   color: black;
   display: none; /* Hidden by default */
