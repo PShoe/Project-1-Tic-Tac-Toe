@@ -143,39 +143,42 @@ var showLine = function () {
   var square8 = document.querySelectorAll('.square')[8];
 
   if (indexWin === 0){
-    square0.className = 'square winningSquare';
-    square1.className = 'square winningSquare';
-    square2.className = 'square winningSquare';
+    square0.className = 'square winningSquare pulse';
+    square1.className = 'square winningSquare pulse';
+    square2.className = 'square winningSquare pulse';
   } else if (indexWin === 1) {
-    square3.className = 'square winningSquare';
-    square4.className = 'square winningSquare';
-    square5.className = 'square winningSquare';
+    square3.className = 'square winningSquare pulse';
+    square4.className = 'square winningSquare pulse';
+    square5.className = 'square winningSquare pulse';
   } else if (indexWin === 2) {
-    square6.className = 'square winningSquare';
-    square7.className = 'square winningSquare';
-    square8.className = 'square winningSquare';
+    square6.className = 'square winningSquare pulse';
+    square7.className = 'square winningSquare pulse';
+    square8.className = 'square winningSquare pulse';
   } else if (indexWin === 3) {
-    square0.className = 'square winningSquare';
-    square3.className = 'square winningSquare';
-    square6.className = 'square winningSquare';
+    square0.className = 'square winningSquare pulse';
+    square3.className = 'square winningSquare pulse';
+    square6.className = 'square winningSquare pulse';
   } else if (indexWin === 4) {
-    square1.className = 'square winningSquare';
-    square4.className = 'square winningSquare';
-    square7.className = 'square winningSquare';
+    square1.className = 'square winningSquare pulse';
+    square4.className = 'square winningSquare pulse';
+    square7.className = 'square winningSquare pulse';
   } else if (indexWin === 5) {
-    square2.className = 'square winningSquare';
-    square5.className = 'square winningSquare';
-    square8.className = 'square winningSquare';
+    square2.className = 'square winningSquare pulse';
+    square5.className = 'square winningSquare pulse';
+    square8.className = 'square winningSquare pulse';
   } else if (indexWin === 6) {
-    square0.className = 'square winningSquare';
-    square4.className = 'square winningSquare';
-    square8.className = 'square winningSquare';
+    square0.className = 'square winningSquare pulse';
+    square4.className = 'square winningSquare pulse';
+    square8.className = 'square winningSquare pulse';
   } else if (indexWin === 7) {
-    square2.className = 'square winningSquare';
-    square4.className = 'square winningSquare';
-    square6.className = 'square winningSquare';
+    square2.className = 'square winningSquare pulse';
+    square4.className = 'square winningSquare pulse';
+    square6.className = 'square winningSquare pulse';
   }
-  var showWin =  setTimeout(showWinPage, 2000);
+  if (winner !== 3 ){
+    var showWin =  setTimeout(showWinPage, 2000);
+  } else { showWinPage();
+  }
 }
 }
 
