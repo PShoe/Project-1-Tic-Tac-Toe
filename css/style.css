@@ -11,18 +11,6 @@ body {
 header {
   text-align: center;
 }
-footer {
-  text-align: center;
-}
-.square {
-  background-color: rgba(111,151,183,.5);
-  margin-bottom: 1px;
-  height: 100px;
-  width: 100px;
-  display: inline-block;
-  border-radius: 5%;
-  border: 1px solid white;
-}
 h1 {
   font-family: 'Abril Fatface', cursive;
   margin: 30px auto;
@@ -38,14 +26,21 @@ h3 {
   font-size: 30px;
   font-family: 'Slabo 27px', serif;
 }
+.square {
+  background-color: rgba(111,151,183,.5);
+  margin-bottom: 1px;
+  height: 100px;
+  width: 100px;
+  display: inline-block;
+  border-radius: 5%;
+  border: 1px solid white;
+}
 .board {
   width: 310px;
   height: 312px;
   margin: 20px auto;
   border-radius: 5%;
-  /*background-color: rgba(11,11,11,.7);*/
 }
-
 .player1 {
   border: 1px solid white;
   background-color: #f0d06b;
@@ -64,47 +59,42 @@ h3 {
   display: inline-block;
   background-image: url("../images/gromit.png");
 }
-.endGame {
-  background-color: lime;
-}
-.line {
-  background-color: green;
-}
 .modal {
-    color: black;
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  color: black;
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 40%; /* Could be more or less, depending on screen size */
-    border-radius: 10px;
-    font-size: 25px;
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%; /* Could be more or less, depending on screen size */
+  border-radius: 10px;
+  font-size: 25px;
 }
 .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 }
 .close:hover,
 .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
-#playerNameBtn {
+#playerNameBtn,
+#resetScoreBtn {
   -webkit-border-radius: 5;
   -moz-border-radius: 5;
   border-radius: 5px;
@@ -112,16 +102,18 @@ h3 {
   color: #ffffff;
   font-size: 20px;
   background-color: #a64d15;
-  padding: 10px 20px 10px 20px;
+  padding: 10px 15px 10px 20px;
   text-decoration: none;
   border: none;
 }
-
 #playerNameBtn:hover {
   background: #df8b52;
   text-decoration: none;
 }
-
+#resetScoreBtn:hover{
+  background: #df8b52;
+  text-decoration: none;
+}
 .winScreenHide {
   display: none;
 }
@@ -153,7 +145,7 @@ h3 {
   -webkit-border-radius: 15;
   -moz-border-radius: 15;
   border-radius: 15px;
-  font-family: Arial;
+  font-family: 'Roboto', sans-serif;
   color: #ffffff;
   font-size: 39px;
   background: #3498db;
@@ -186,11 +178,9 @@ h3 {
   color: white;
 }
 footer {
-  /*background-color: rgba(166,71,21,.8);*/
   color: white;
   text-align: left;
   padding-left: 30px;
-  /*border-top: 1px solid white;*/
   font-family: 'Roboto', sans-serif;
   position: absolute; width:100%; bottom:0px;
   line-height: 0px;

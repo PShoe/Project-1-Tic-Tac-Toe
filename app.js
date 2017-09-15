@@ -3,11 +3,11 @@ var board = document.querySelector('.board');
 var squares = document.querySelectorAll('.square');
 var playerOne = true;
 var winner = 0;
-tie = 0;
-gameOver = false;
-player1Score = 0;
-player2Score = 0;
-boardArray = ["","","","","","","","",""];
+var gameOver = false;
+var tie = 0;
+var player1Score = 0;
+var player2Score = 0;
+var boardArray = ["","","","","","","","",""];
 var headerDiv = document.querySelector('header');
 var submitButton = document.querySelector("#submitButton");
 var modal = document.getElementById('myModal');
@@ -22,6 +22,7 @@ var player2Name = "Player 2";
 var mainDiv = document.querySelector('main');
 var player2NameText = document.querySelector('#player2NameSpan');
 var player1NameText = document.querySelector('#player1NameSpan');
+var resetScoreBtn = document.querySelector('#resetScoreBtn')
 
 submitButton.addEventListener('click', function(){
   player1Name = document.querySelector("#player1Name").value;
@@ -104,7 +105,7 @@ var col3 = boardArray[2]+boardArray[5]+boardArray[8];
 var dia1 = boardArray[0]+boardArray[4]+boardArray[8];
 var dia2 = boardArray[2]+boardArray[4]+boardArray[6];
 
-//use and object here instead??
+//use an object here instead or array of arrays??
 
 var wins = [row1, row2, row3, col1, col2, col3, dia1, dia2];
 
@@ -191,3 +192,14 @@ var tallyScore = function () {
     }
   }
 }
+
+var resetScore = function () {
+  tie = 0;
+  player1Score = 0;
+  player2Score = 0;
+  document.querySelector('#player1Score').textContent = player1Score
+  document.querySelector('#player2Score').textContent = player2Score;
+  document.querySelector('#tieScore').textContent = tie;
+}
+
+resetScoreBtn.addEventListener('click',resetScore);
