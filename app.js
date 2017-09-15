@@ -46,15 +46,16 @@ window.onclick = function(event) {
 }
 
 board.addEventListener('click', function(event) {
-  if (gameOver === false){
-  checkSquare(event);
-  markSquare(event);
-  pushtoBoardArray(event);
-  checkifWinner();
-  showLine();
-  tallyScore();
-  // showWinPage();
-}
+  if (event.target.classList.contains('square')){
+    if (gameOver === false){
+      checkSquare(event);
+      markSquare(event);
+      pushtoBoardArray(event);
+      checkifWinner();
+      showLine();
+      tallyScore();
+    }
+  }
 })
 
 var checkSquare = function (event) {
