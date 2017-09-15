@@ -3,7 +3,7 @@
 ## Summary
 [Link to game](https://pshoe.github.io/Project-1-Tic-Tac-Toe/)
 
-![](images/skiing.png)
+![](https://i.pinimg.com/736x/25/bd/b0/25bdb0454a099492bc42e4f1392e938a--a-grand-picnics.jpg)
 
 This is a Wallace and gromit themed tic-tac-toe game.
 
